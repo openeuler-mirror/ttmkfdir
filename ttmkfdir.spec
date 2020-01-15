@@ -16,7 +16,6 @@ Patch7:  ttmkfdir-3.0.9-encoding-dir.patch
 Patch8:  ttmkfdir-3.0.9-font-scale.patch
 Patch9:  ttmkfdir-3.0.9-bug434301.patch
 Patch10: ttmkfdir-3.0.9-freetype-header-fix2.patch
-Patch11: ttmkfdir-3.0.9-fedora-ldflags.patch
 
 BuildRequires: freetype-devel >= 2.0 flex libtool
 BuildRequires: bzip2-devel zlib-devel gcc-c++

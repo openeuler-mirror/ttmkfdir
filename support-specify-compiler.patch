@@ -1,0 +1,32 @@
+diff -up ttmkfdir-3.0.9/Makefile.orig2 ttmkfdir-3.0.9/Makefile
+--- ttmkfdir-3.0.9/Makefile.orig2	2023-04-18 14:57:13.757875201 +0800
++++ ttmkfdir-3.0.9/Makefile	2023-04-18 15:07:53.237978124 +0800
+@@ -26,7 +26,7 @@ FREETYPE_LIB=$(shell freetype-config --l
+ 
+ OPTFLAGS=
+ DEBUG=-ggdb
+-CXX=g++
++CXX?=g++
+ CXXFLAGS=-Wall -pedantic $(FREETYPE_INCL) $(DEBUG) $(OPTFLAGS)
+ LDFLAGS=$(FREETYPE_LIB) $(DEBUG) -lz
+ 
+@@ -34,15 +34,17 @@ DESTDIR=
+ PREFIX=/usr
+ BINDIR=$(PREFIX)/bin
+ 
++LIBTOOL=libtool --tag=CC
++
+ .PHONY: clean
+ 
+ all: ttmkfdir
+ 
+ .cpp.o:
+-	libtool --mode=compile $(CXX) $(CXXFLAGS) -o $@ -c $^
++	$(LIBTOOL) --mode=compile $(CXX) $(CXXFLAGS) -o $@ -c $^
+ 
+ ttmkfdir: ttmkfdir.o directory.o commandline.o ttf.o encoding.o parser.o builtin.o
+-	libtool --mode=link $(CXX) -o $@ $^ $(LDFLAGS)
++	$(LIBTOOL) --mode=link $(CXX) -o $@ $^ $(LDFLAGS)
+ 
+ parser.cpp: encoding.l
+ 	    flex -i -8 -o$@ $<

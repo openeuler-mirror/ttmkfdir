@@ -1,7 +1,7 @@
 Summary: Utility to create fonts.scale files for truetype fonts
 Name:    ttmkfdir
 Version: 3.0.9
-Release: 56
+Release: 57
 License: LGPLv2+
 Source0: %{name}-%{version}.tar.bz2
 Source1: ttmkfdir.1
@@ -16,6 +16,7 @@ Patch7:  ttmkfdir-3.0.9-encoding-dir.patch
 Patch8:  ttmkfdir-3.0.9-font-scale.patch
 Patch9:  ttmkfdir-3.0.9-bug434301.patch
 Patch10: ttmkfdir-3.0.9-freetype-header-fix2.patch
+Patch11: support-specify-compiler.patch
 
 BuildRequires: freetype-devel >= 2.0 flex libtool
 BuildRequires: bzip2-devel zlib-devel gcc-c++
@@ -46,5 +47,8 @@ cp -p %{SOURCE1} $RPM_BUILD_ROOT/%{_mandir}/man1/
 %{_mandir}/man1/
 
 %changelog
+* Tue Apr 18 2023 Xiaoya Huang <huangxiaoya@iscas.ac.cn> - 3.0.9-57
+- Support specify CC
+
 * Tue Dec 3 2019 mengxian <mengxian@huawei.com> - 3.0.9-56
 - Package init
